@@ -9,7 +9,7 @@ function App() {
   const [first, setFirst] = useState(0)
   const [color, setColor] = useState(0)
 
-
+  
   useEffect(() => {
     alert("Count was changed")
     setColor(color + 1)
