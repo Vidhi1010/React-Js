@@ -6,6 +6,7 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
   const [name, setName] = useState("Vidhi")
+  const [email, setEmail] = useState("")
 
   const a = useRef(10)
   const handelClick =() => {
@@ -24,12 +25,17 @@ function App() {
   const handelClick1 = (e)=> {
     setName(e.target.value)
   }
+  
+  const handelClick2 = (e)=> {
+    setEmail(e.target.value)
+  }
   return (
     <>
     <div className="button">
       <button onClick={handelClick}>{count}</button>
     </div>
     <input type="text" value={name} onChange={handelClick1} />
+    <input type="text" value={email} onChange={handelClick2} />
     </>
   )
 }
