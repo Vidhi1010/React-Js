@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
 
   const validatePassword = (password) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -37,31 +38,60 @@ const LoginPage = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
-              placeholder="Passward"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="mb-6">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Sign In
             </button>
           </div>
+          <div className="flex items-center justify-between mb-4">
+            <label className="flex items-center text-gray-700 text-sm">
+              <input
+                className="mr-2 leading-tight"
+                type="checkbox"
+                id="rememberMe"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+              />
+              Remember Me
+            </label>
+            <a
+              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+              href="#"
+            >
+              Forgot Password?
+            </a>
+          </div>
+          <div className="text-center">
+            <p className="text-gray-700 text-sm">
+              Not a member?{' '}
+              <a
+                className="font-bold text-blue-500 hover:text-blue-800"
+                href="#"
+              >
+                Sign Up
+              </a>
+            </p>
+          </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
