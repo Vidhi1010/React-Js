@@ -1,30 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    firstName: '',
-    lastName: '',
-    username: '',
-    password: ''
-  });
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Sign up logic here
-    console.log('Signing up:', formData);
+  const onSubmit = (data) => {
+    console.log('Signing up:', data);
   };
 
   return (
-    <div className="flex justify-center items-center h-screen " style={{ backgroundColor:'#f0f0f0' }}>
+    <div className="flex justify-center items-center h-screen" style={{ backgroundColor: '#f0f0f0' }}>
+      <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg">
+        photo
+      </div>
       <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg">
         <h2 className="text-2xl font-bold mb-6">Create Your Account</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
               Email
@@ -32,13 +23,11 @@ const Signup = () => {
             <input
               type="email"
               id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
+              {...register('email', { required: 'Email is required' })}
               className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring focus:border-blue-500"
               placeholder="Enter Email"
-              required
             />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="firstName" className="block text-gray-700 font-bold mb-2">
@@ -47,13 +36,11 @@ const Signup = () => {
             <input
               type="text"
               id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleInputChange}
+              {...register('firstName', { required: 'First name is required' })}
               className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring focus:border-blue-500"
               placeholder="Enter First Name"
-              required
             />
+            {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="lastName" className="block text-gray-700 font-bold mb-2">
@@ -62,13 +49,11 @@ const Signup = () => {
             <input
               type="text"
               id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleInputChange}
+              {...register('lastName', { required: 'Last name is required' })}
               className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring focus:border-blue-500"
               placeholder="Enter Last Name"
-              required
             />
+            {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="username" className="block text-gray-700 font-bold mb-2">
@@ -77,13 +62,11 @@ const Signup = () => {
             <input
               type="text"
               id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleInputChange}
+              {...register('username', { required: 'Username is required' })}
               className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring focus:border-blue-500"
               placeholder="Enter Username"
-              required
             />
+            {errors.username && <p className="text-red-500 text-sm mt-1">{errors.username.message}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="password" className="block text-gray-700 font-bold mb-2">
@@ -92,13 +75,17 @@ const Signup = () => {
             <input
               type="password"
               id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
+              {...register('password', {
+                required: 'Password is required',
+                pattern: {
+                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/,
+                  message: 'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.'
+                }
+              })}
               className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring focus:border-blue-500"
               placeholder="Enter Password"
-              required
             />
+            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
           </div>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center">
