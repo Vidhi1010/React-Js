@@ -1,0 +1,1 @@
+const mainontainer = document.querySelector('#root');
