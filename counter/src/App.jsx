@@ -19,7 +19,7 @@ function App() {
     if(counter > 0){
       setCounter(counter - 1)
     }
-    
+  
   }
   return (
     <>
@@ -30,7 +30,7 @@ function App() {
      <br />
      <button onClick = {removeValue}>Remove value</button>
     </>
-  )
+  ) 
 }
 
 export default App
