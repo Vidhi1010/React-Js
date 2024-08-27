@@ -21,6 +21,11 @@ function App() {
     }
   
   }
+  const mulValue = () => {
+    if(counter > 0) {
+      setCounter(counter * 2);
+    }
+  }
   return (
     <>
      <h1>hello</h1>
@@ -29,6 +34,9 @@ function App() {
      <br />
      <br />
      <button onClick = {removeValue}>Remove value</button>
+     <br />
+     <br /> 
+     <button onClick={mulValue}>mulValue</button>
     </>
   ) 
 }
