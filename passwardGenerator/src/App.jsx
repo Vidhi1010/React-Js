@@ -32,9 +32,10 @@ function App() {
 
   const copyPasswardToClipboard = useCallback(() => {
     passwardRef.current?.select();
+    //passwardRef.current?.setSelectionRange(0, 99);
     window.navigator.clipboard.writeText(passward);
   }, [passward]);
-
+ 
   useEffect(() => {
     passwardGenerator();
   }, [length, numberAllowed, charAllowed, passwardGenerator]);

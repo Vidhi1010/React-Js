@@ -1,0 +1,32 @@
+<head>
+  <script src="https://luke-chang.github.io/js-spatial-navigation/spatial_navigation.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+      // Initialize
+      SpatialNavigation.init();
+
+      // Define navigable elements (anchors and elements with "focusable" class).
+      SpatialNavigation.add({
+        selector: 'a, div, .focusable'
+      });
+
+      // Make the *currently existing* navigable elements focusable.
+      SpatialNavigation.makeFocusable();
+
+      // Focus the first navigable element.
+      SpatialNavigation.focus();
+    });
+  </script>
+  <style>
+    /* Add style to the focused elements */
+    :focus {
+      outline: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <div >Div 1</div>
+  <div >Div 2</div>
+</body>

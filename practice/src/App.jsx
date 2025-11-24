@@ -1,41 +1,33 @@
 import { useState, useRef } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+//import RefExample from './components/RefExample'
+
+import RefTime from './components/RefTime'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [name, setName] = useState("Vidhi")
-  const [email, setEmail] = useState("")
 
-  const a = useRef(10)
-  const handelClick =() => {
-    //alert("Hi !!!")
-    /* let a = 10;
-    a = a+1;
-    console.log(a); */
-
-    a.current = a.current + 1;
-    console.log(a.current)
-    setCount(a.current + 1)
-
-
-  }
-
-  const handelClick1 = (e)=> {
-    setName(e.target.value)
-  }
+  /* const products = [
+    {id: 1, name: "product 1", price: 100},
+    {id: 2, name: "product 2", price: 200},
+    {id: 3, name: "product 3", price: 300},
+    {id: 4, name: "product 4", price: 400},
+    {id: 5, name: "product 5", price: 500},
+  ]
   
-  const handelClick2 = (e)=> {
-    setEmail(e.target.value)
-  }
+  const listItems = products.map(product => 
+    <li key={product.id}>
+      {product.name}
+    </li>
+  ) */
+
+  
+  
   return (
     <>
-    <div className="button">
-      <button onClick={handelClick}>{count}</button>
-    </div>
-    <input type="text" value={name} onChange={handelClick1} />
-    <input type="text" value={email} onChange={handelClick2} />
+    {/* <ul>{listItems}</ul> */}
+    {/* <RefExample /> */}
+
+    <RefTime />
     </>
   )
 }
